@@ -61,7 +61,11 @@ sudo vzctl stop $ID && echo "$ID stopped [OK]" && sudo vzdump $ID -dumpdir /home
 # DumpName
 vzDumpName=$(ls /home/$USER/vzdump/)
 
+if [ -z $vzDumpName ] ; then
+    echo "No dump found in /home/$USER/vzdump/"
+    exit
+fi
+
 # scp to new server
 cd /home/$USER/vzdump
-sudo scp -i /home/$USER/.ssh/id_rsa "-P $rPort" $vzDumpName $rUSER@$rIP:$rPath && sudo rm $vzDumpName
-echo "SCP $vzDumpName on $rIP [OK]"
+sudo scp -i /home/$USER/.ssh/id_rsa "-P $rPort" $vzDumpName $rUSER@$rIP:$rPath && sudo rm $vzDumpName && echo "SCP $vzDumpName on $rIP [OK]"
