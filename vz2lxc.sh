@@ -53,7 +53,7 @@ fi
 # Work on VZ_ID #
 #################
 # Destination dump
-mkdir -p $destDump
+sudo mkdir -p $destDump
 
 # Stop & Dump
 sudo vzctl stop $ID && echo "$ID stopped [OK]" && sudo vzdump $ID -dumpdir /home/$USER/vzdump && echo "$ID : dump [OK]"
