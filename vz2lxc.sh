@@ -41,11 +41,11 @@ elif [[ ! $ID =~ ^[0-9]+$ ]]; then
 fi
 
 # Check for IP
-if [ -z $IP ] ; then
+if [ -z $rIP ] ; then
     echo 'No IP passed'
     exit
-elif [[ ! $IP =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-    echo "$IP: expecting IP"
+elif [[ ! $rIP =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+    echo "$rIP: expecting IP"
     exit 
 fi
 
