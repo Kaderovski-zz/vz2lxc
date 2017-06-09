@@ -62,5 +62,4 @@ vzDumpName=$(ls /home/$USER/vzdump/)
 
 # scp to new server
 cd /home/$USER/vzdump
-sudo scp -i /home/$USER/.ssh/id_rsa "-P $rPort" $vzDumpName $rUSER@$rIP:$rPath
-sudo rm $vzDumpName
+sudo scp -i /home/$USER/.ssh/id_rsa "-P $rPort" $vzDumpName $rUSER@$rIP:$rPath && sudo rm $vzDumpName
