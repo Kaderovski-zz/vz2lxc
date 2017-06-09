@@ -56,7 +56,10 @@ fi
 sudo mkdir -p $destDump
 
 # Stop & Dump
-sudo vzctl stop $ID && echo "$ID stopped [OK]" && sudo vzdump $ID -dumpdir /home/$USER/vzdump && echo "$ID : dump [OK]"
+sudo vzctl stop $ID \
+    && echo "$ID stopped [OK]" \
+    && sudo vzdump $ID -dumpdir /home/$USER/vzdump \
+    && echo "$ID : dump [OK]"
 
 # DumpName
 vzDumpName=$(ls /home/$USER/vzdump/)
@@ -68,4 +71,6 @@ fi
 
 # scp to new server
 cd /home/$USER/vzdump
-sudo scp -i /home/$USER/.ssh/id_rsa "-P $rPort" $vzDumpName $rUSER@$rIP:$rPath && sudo rm $vzDumpName && echo "SCP $vzDumpName on $rIP [OK]"
+sudo scp -i /home/$USER/.ssh/id_rsa "-P $rPort" $vzDumpName $rUSER@$rIP:$rPath\
+    && sudo rm $vzDumpName \
+    && echo "SCP $vzDumpName on $rIP [OK]"
